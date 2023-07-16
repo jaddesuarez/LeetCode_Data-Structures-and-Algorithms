@@ -92,3 +92,49 @@ const isSubsequence = (s, t) => {
     return i == s.length
 }
 
+//Exercise 1: Reverse String
+
+//Write a function that reverses a string. The input string is given as an array of characters s.
+
+//You must do this by modifying the input array in-place with O(1) extra memory.
+
+const reverseString = (s) => {
+    let i = 0, j = s.length - 1
+    
+    while ( i < j ) {
+        [s[i], s[j]] = [s[j], s[i]]
+        i++
+        j--
+    }
+    
+    return s
+    
+}
+
+//Exercise 2: Squares of a Sorted Array
+
+//Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+const sortedSquares = (nums) => {
+    let i = 0
+    let j = nums.length - 1
+
+    const orderedNumbers = []
+
+    while (i <= j) {
+        if (Math.abs(nums[i]) > Math.abs(nums[j])) {
+            orderedNumbers.unshift(nums[i] ** 2)
+            i++
+        }
+
+        else {
+            orderedNumbers.unshift(nums[j] ** 2)
+            j--
+        }
+    }
+
+    return orderedNumbers
+}
+
+
+
