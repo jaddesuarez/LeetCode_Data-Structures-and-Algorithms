@@ -1,7 +1,8 @@
 //Example 1: Given an array of positive integers nums and an integer k, find the length of the longest subarray whose sum is less than or equal to k. 
 
 const findLength = (nums, k) => {
-    // Initialize two pointers, 'left' and 'right', to track the sliding window.
+    // Initialize two pointers, 'left'.
+    // 'curr' keeps track of the sum of elements in the current subarray.
     // 'ans' will store the maximum length of the subarray found so far.
     let left = 0, curr = 0, ans = 0
     // Loop through the array using the 'right' pointer and add the current element to the 'curr' sum.
@@ -25,7 +26,8 @@ const findLength = (nums, k) => {
 //For example, given s = "1101100111", the answer is 5. If you perform the flip at index 2, the string becomes 1111100111.
 
 const findLength = (s) => {
-    // Initialize two pointers, 'left' and 'right', to track the sliding window.
+    // Initialize two pointers, 'left'.
+    // 'curr' keeps track of the sum of elements in the current subarray.
     // 'ans' will store the maximum length of the subarray found so far.
     let left = 0, curr = 0, ans = 0
     // Loop through the string 's' using the 'right' pointer.
