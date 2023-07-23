@@ -4,7 +4,7 @@
 //For example, given nums = [1, 6, 3, 2, 7, 2], queries = [[0, 3], [2, 5], [2, 4]], and limit = 13, the answer is [true, false, true]. For each query, the subarray sums are [12, 14, 12].
 //Test
 const answerQueries = (nums, queries, limit) => {
-    // Calculate the prefix sum array 'prefix' for the 'nums' array.
+    // Initiate the prefix sum array 'prefix' for the 'nums' array.
     let prefix = [nums[0]]
     for (let i = 1; i < nums.length; i++) {
         // Calculate the cumulative sum for each element and store it in 'prefix'.
@@ -63,4 +63,46 @@ const waysToSplitArray = (nums) => {
 
     // Return the total number of valid splits
     return ans
+}
+
+//Exercise 1: Running Sum of 1d Array
+//Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+//Return the running sum of nums.
+
+const runningSum = (nums) => {
+    // Initiate the prefix sum array 'prefix' for the 'nums' array.
+    let prefix = [nums[0]]
+    for (let i = 1; i < nums.length; i++) {
+        // Calculate the cumulative sum for each element and store it in 'prefix'.
+        prefix.push(nums[i] + prefix[prefix.length - 1])
+    }
+    return prefix
+}
+
+//Exercise 2: Minimum Value to Get Positive Step by Step Sum
+// Given an array of integers nums, you start with an initial positive value startValue.
+// In each iteration, you calculate the step by step sum of startValue plus elements in nums(from left to right).
+// Return the minimum positive value of startValue such that the step by step sum is never less than 1.
+
+const minStartValue = (nums) => {
+    // Initialize the starting value to 1
+    let startValue = 1
+    // Loop until a valid start value is found
+    while (true) {
+        // Initialize the sum with the current start value
+        let sum = startValue
+        // Loop through the array 'nums'
+        for (let i = 0; i < nums.length; i++) {
+            // Add the current element of 'nums' to the sum
+            sum += nums[i]
+            // If the sum becomes less than 1, break out of the loop
+            // and try the next start value
+            if (sum < 1) break
+            // If we've reached the end of the 'nums' array and the sum is still positive,
+            // it means this start value is valid. Return it as the result. 
+            if (i === nums.length - 1) return startValue
+        }
+        // Try the next start value for the next iteration
+        startValue++
+    }
 }
