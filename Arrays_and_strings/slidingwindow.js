@@ -103,6 +103,10 @@ const findBestSubarray = (nums, k) => {
     return ans
 }
 
+
+// --------------- ❕❕❕❕❕ ---------------
+
+
 //Exercise 1: 643. Maximum Average Subarray I
 
 //https://leetcode.com/problems/maximum-average-subarray-i/
@@ -114,20 +118,20 @@ const findBestSubarray = (nums, k) => {
 const findMaxAverage = (nums, k) => {
     let sum = 0
 
-  // Calculate the initial sum for the first 'k' elements.
-  for (let i = 0; i < k; i++) {
-    sum += nums[i]
-  }
+    // Calculate the initial sum for the first 'k' elements.
+    for (let i = 0; i < k; i++) {
+        sum += nums[i]
+    }
 
-  // Set 'ans' to the initial sum.
-  let ans = sum
+    // Set 'ans' to the initial sum.
+    let ans = sum
 
-  // Iterate through the array from index 'k' and update 'sum' and 'ans'.
-  for (let i = k; i < nums.length; i++) {
-    sum += nums[i] - nums[i - k]
-    ans = Math.max(ans, sum)
-  }
+    // Iterate through the array from index 'k' and update 'sum' and 'ans'.
+    for (let i = k; i < nums.length; i++) {
+        sum += nums[i] - nums[i - k]
+        ans = Math.max(ans, sum)
+    }
 
-  // Return the maximum average by dividing 'ans' by 'k'.
-  return ans / k
+    // Return the maximum average by dividing 'ans' by 'k'.
+    return ans / k
 }

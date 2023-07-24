@@ -33,7 +33,9 @@ for (const [key, value] of hashMap02) {
     console.log(key + " " + value)
 }
 
+
 // --------------- ❕❕❕❕❕ ---------------
+
 
 // Example 1: Two Sum
 
@@ -105,6 +107,10 @@ const findNumbers = (nums) => {
     // Return the array containing numbers that meet the condition
     return ans
 }
+
+
+// --------------- ❕❕❕❕❕ ---------------
+
 
 // Exercise 1: Check if the Sentence Is Pangram
 

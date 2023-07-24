@@ -12,7 +12,7 @@ const checkIfPalindrome = (s) => {
         if (s[left] != s[right]) {
             return false
         }
-        
+
         left++
         right--
     }
@@ -28,7 +28,7 @@ const checkForTarget = (nums, target) => {
     // Initialize two pointers, 'left' and 'right', to point to the start and end of the array.
     let left = 0
     let right = nums.length - 1
-    
+
     // Use a while loop to compare elements from both ends of the array.
     while (left < right) {
         // Calculate the sum of elements at 'left' and 'right' pointers.
@@ -60,7 +60,7 @@ const combine = (arr1, arr2) => {
     // Use a while loop to merge the two sorted arrays.
     while (i < arr1.length && j < arr2.length) {
         // If the element in 'arr1' is smaller, add it to 'ans' and move to the next element in 'arr1'.
-         // If the element in 'arr2' is smaller or equal, add it to 'ans' and move to the next element in 'arr2'.
+        // If the element in 'arr2' is smaller or equal, add it to 'ans' and move to the next element in 'arr2'.
         if (arr1[i] < arr2[j]) {
             ans.push(arr1[i])
             i++
@@ -101,12 +101,16 @@ const isSubsequence = (s, t) => {
         if (s[i] == t[j]) {
             i++
         }
-        
+
         j++
     }
     // Return true if 'i' is equal to the length of 's', indicating a successful match.
     return i == s.length
 }
+
+
+// --------------- ❕❕❕❕❕ ---------------
+
 
 //Exercise 1: Reverse String
 
@@ -118,7 +122,7 @@ const reverseString = (s) => {
     // Initialize two pointers, 'i' and 'j', to point to the start and end of the string.
     let i = 0, j = s.length - 1
     // Use a while loop to compare characters from both ends of the string, move 'left' and 'right' pointer to the right towards the center of the string.
-    while ( i < j ) {
+    while (i < j) {
         // Swap the characters at indices 'i' and 'j' using array destructuring.
         [s[i], s[j]] = [s[j], s[i]]
         i++
@@ -126,7 +130,7 @@ const reverseString = (s) => {
     }
     // Return the reversed string.
     return s
-    
+
 }
 
 //Exercise 2: Squares of a Sorted Array
