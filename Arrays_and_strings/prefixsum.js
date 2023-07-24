@@ -1,6 +1,5 @@
-//Example 1: Given an integer array nums, an array queries where queries[i] = [x, y] and an integer limit, 
+//Example 1: Given an integer array nums, an array queries where queries[i] = [x, y] and an integer limit
 //return a boolean array that represents the answer to each query. A query is true if the sum of the subarray from x to y is less than limit, or false otherwise.
-
 //For example, given nums = [1, 6, 3, 2, 7, 2], queries = [[0, 3], [2, 5], [2, 4]], and limit = 13, the answer is [true, false, true]. For each query, the subarray sums are [12, 14, 12].
 //Test
 const answerQueries = (nums, queries, limit) => {
@@ -24,7 +23,7 @@ const answerQueries = (nums, queries, limit) => {
     return ans
 }
 
-//Example 2: 2270. Number of Ways to Split Array
+//Example 2: Number of Ways to Split Array
 
 //https://leetcode.com/problems/number-of-ways-to-split-array/
 
@@ -66,6 +65,9 @@ const waysToSplitArray = (nums) => {
 }
 
 //Exercise 1: Running Sum of 1d Array
+
+//https://leetcode.com/problems/running-sum-of-1d-array/
+
 //Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
 //Return the running sum of nums.
 
@@ -80,6 +82,9 @@ const runningSum = (nums) => {
 }
 
 //Exercise 2: Minimum Value to Get Positive Step by Step Sum
+
+//https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
+
 // Given an array of integers nums, you start with an initial positive value startValue.
 // In each iteration, you calculate the step by step sum of startValue plus elements in nums(from left to right).
 // Return the minimum positive value of startValue such that the step by step sum is never less than 1.
@@ -105,4 +110,44 @@ const minStartValue = (nums) => {
         // Try the next start value for the next iteration
         startValue++
     }
+}
+
+//Exercise 3: K Radius Subarray Averages
+
+// https://leetcode.com/problems/k-radius-subarray-averages/description/
+
+//You are given a 0 - indexed array nums of n integers, and an integer k.
+//The k - radius average for a subarray of nums centered at some index i with the radius k is the average of all elements in nums between the indices i - k and i + k(inclusive).If there are less than k elements before or after the index i, then the k - radius average is - 1.
+//Build and return an array avgs of length n where avgs[i] is the k - radius average for the subarray centered at index i.
+//The average of x elements is the sum of the x elements divided by x, using integer division.The integer division truncates toward zero, which means losing its fractional part.
+//For example, the average of four elements 2, 3, 1, and 5 is(2 + 3 + 1 + 5) / 4 = 11 / 4 = 2.75, which truncates to 2.
+
+const getAverages = (nums, k) => {
+    const n = nums.length
+    // Initialize the avgs array with -1
+    const avgs = Array(n).fill(-1)
+    // Left pointer of the sliding window
+    let left = 0
+    // Variable to keep track of the sum of elements in the sliding window
+    let sum = 0
+
+
+    for (let right = 0; right < nums.length; right++) {
+        // Add the current element to the sum
+        sum += nums[right]
+        // Check if the sliding window size is equal to k * 2 + 1
+        // If so, we have a valid k-radius subarray centered at the current index (right)
+        if (right - left + 1 === k * 2 + 1) {
+            // Calculate the k-radius average
+            const average = Math.floor(sum / (k * 2 + 1))
+            // Update the avgs array with the average at the center index
+            avgs[right - k] = average
+            // Remove the element at the left pointer from the sum
+            sum -= nums[left]
+            // Move the left pointer to slide the window to the right
+            left++
+        }
+    }
+    // Return the array containing k-radius averages
+    return avgs
 }
