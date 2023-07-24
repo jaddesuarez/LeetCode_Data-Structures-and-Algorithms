@@ -123,7 +123,6 @@ const minStartValue = (nums) => {
 //For example, the average of four elements 2, 3, 1, and 5 is(2 + 3 + 1 + 5) / 4 = 11 / 4 = 2.75, which truncates to 2.
 
 const getAverages = (nums, k) => {
-    const n = nums.length
     // Initialize the avgs array with -1
     const avgs = Array(n).fill(-1)
     // Left pointer of the sliding window
